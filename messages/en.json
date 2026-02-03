@@ -1,0 +1,148 @@
+{
+    "Navbar": {
+        "about": "About AZM Fintech",
+        "services": "Our Products & Services",
+        "projects": "Our Projects",
+        "partners": "Success Partners",
+        "getStarted": "Contact Us"
+    },
+    "Hero": {
+        "badge": "Digital Transformation in Financial Services",
+        "title_main": "Your Trusted Technical",
+        "title_highlight": "AZM Fintech",
+        "title_sub": "Innovative Financial Solutions & Consultations",
+        "description": "We are committed to contributing to building a prosperous economy and an ambitious nation by implementing high-impact projects that combine efficiency, flexibility, and excellence, in line with the goals of Saudi Vision 2030.",
+        "cta_consultation": "Contact Us",
+        "cta_case_studies": "Explore Our Projects",
+        "trust": "Success Partners",
+        "balance": "Balance",
+        "incoming": "Incoming",
+        "trust_prefix": "Serving a selection of"
+    },
+    "About": {
+        "title": "About AZM",
+        "title_highlight": "Fintech",
+        "description": "At AZM Fintech, we aspire to be the leading and trusted technical partner in providing innovative financial solutions and executive consultancy services, with a strong focus on driving digital transformation in the financial sector.",
+        "cards": {
+            "vision": {
+                "title": "Our Vision",
+                "description": "To be the leading and trusted technical partner in providing innovative financial solutions and executive consultancy services."
+            },
+            "mission": {
+                "title": "Our Mission",
+                "description": "Contributing to building a prosperous economy and an ambitious nation by implementing high-impact projects that combine efficiency, flexibility, and excellence."
+            },
+            "value": {
+                "title": "Our Values",
+                "description": "Performance excellence, innovative solutions, and full compliance with approved standards and regulations in the Kingdom of Saudi Arabia."
+            }
+        },
+        "decade_innovation": "Contributing to moving the financial services industry to new horizons.",
+        "decade_description": "We pride ourselves on being licensed within the SADAD Payment System, providing our clients with secure, reliable, and fully integrated digital payment services.",
+        "why_choose": "Why Choose AZM?",
+        "why_choose_description": "We empower public and private sector institutions through exceptional solutions specifically designed to meet their changing and evolving needs in the fintech field.",
+        "feature1": "Licensed with SADAD Payment System",
+        "feature2": "Compliance with Saudi Vision 2030",
+        "feature3": "Secure & Integrated Digital Payment Solutions",
+        "feature4": "Custom-designed Fintech Solutions"
+    },
+    "Services": {
+        "title": "Our Products &",
+        "title_highlight": "Technical Solutions",
+        "description": "We offer a comprehensive range of products and solutions designed to bridge gaps in financial operations management and improve financial products and services.",
+        "cta_all": "Explore All Solutions",
+        "read_more": "Read More",
+        "items": {
+            "wallets": {
+                "title": "Edaa'at",
+                "description": "An innovative financial solution that responds to user needs and keeps pace with future developments in the financial sector."
+            },
+            "mobile": {
+                "title": "Banks Hub",
+                "description": "An integrated platform for linking banking services and facilitating technically advanced financial operations."
+            },
+            "analytics": {
+                "title": "Crowdfunding Solutions",
+                "description": "Systems and platforms dedicated to supporting crowdfunding and financial brokerage models with high efficiency."
+            },
+            "payments": {
+                "title": "Payment Infrastructure",
+                "description": "A seamless digital payment infrastructure fully integrated with SADAD through leading gateways."
+            },
+            "compliance": {
+                "title": "Financial Digital Transformation",
+                "description": "Technical solutions for comprehensive digital transformation for financial institutions and service providers according to the highest standards."
+            },
+            "api": {
+                "title": "AI Systems",
+                "description": "AI-powered technologies that give you smart financial insights and effective automation of financial operations."
+            }
+        }
+    },
+    "Partners": {
+        "title": "Success Partners"
+    },
+    "Projects": {
+        "title": "AZM Fintech",
+        "title_highlight": "Projects",
+        "description": "A review of projects and initiatives accomplished by AZM Fintech to drive digital transformation.",
+        "view_project": "View Project Details",
+        "items": {
+            "neobank": {
+                "title": "Nafith Platform",
+                "category": "Government Services",
+                "summary": "An integrated platform for managing digital commercial papers in cooperation with relevant authorities."
+            },
+            "crypto": {
+                "title": "Ejar System (Billing & Payment)",
+                "category": "Financial Solutions",
+                "summary": "The electronic billing and payment project for the Ejar system, facilitating financial operations for the housing sector."
+            },
+            "investment": {
+                "title": "Jood Housing Platform",
+                "category": "Non-profit Sector",
+                "summary": "Developing financial and technical solutions for the Jood Housing platform to support community giving."
+            }
+        }
+    },
+    "CTA": {
+        "title_main": "Ready to keep pace with the",
+        "title_highlight": "Future of Fintech?",
+        "description": "Contact us today to explore how our innovative solutions can support your business growth and achieve your digital transformation goals.",
+        "cta_beta": "Book a Consultation",
+        "cta_advisor": "Contact Us",
+        "uptime": "Well-studied Solutions",
+        "active_users": "Your partner in digital transformation",
+        "uptime_value": "Reliability"
+    },
+    "Footer": {
+        "description": "AZM Fintech: The leading technical partner in providing innovative financial solutions, committed to achieving Saudi Vision 2030.",
+        "product": "Products",
+        "company": "Company",
+        "resources": "Resources",
+        "newsletter": "Newsletter",
+        "subscribe": "Subscribe",
+        "placeholder": "Enter your email",
+        "rights": "All rights reserved by AZM Fintech Company.",
+        "newsletter_sub": "Subscribe to get the latest fintech updates and digital solutions.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms & Conditions",
+        "cookies": "Cookie Policy",
+        "links": {
+            "banking": "Banks Hub",
+            "payments": "Payments",
+            "security": "Security",
+            "api": "Reports",
+            "about": "About Company",
+            "careers": "Careers",
+            "press": "News",
+            "contact": "Contact Us",
+            "blog": "Blog",
+            "docs": "Documentation",
+            "help": "Help Center"
+        }
+    },
+    "Common": {
+        "logo": "AZM Fintech"
+    }
+}
