@@ -116,112 +116,118 @@ const About = () => {
                     ))}
                 </div>
 
-                {/* Bottom Impact Section */}
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Bottom Impact Section - Redesigned for Simplicity & Shine */}
+                <div className="grid lg:grid-cols-2 gap-20 items-center">
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, x: isRtl ? 40 : -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="relative"
+                        transition={{ duration: 0.8 }}
+                        className="relative group"
                     >
-                        {/* Shimmering Impact Box */}
-                        <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 via-transparent to-blue-400/20 rounded-[50px] blur-2xl -z-10" />
+                        {/* Premium Glass Card */}
+                        <div className="relative overflow-hidden rounded-[40px] bg-white border border-gray-100 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.08)] p-12">
+                            {/* Animated Shine Effect */}
+                            <motion.div
+                                animate={{
+                                    x: ["-100%", "200%"],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                    repeatDelay: 2
+                                }}
+                                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 pointer-events-none z-10"
+                            />
 
-                        <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-[40px] p-12 aspect-[4/3] flex flex-col justify-between relative overflow-hidden group">
-                            {/* Abstract moving pattern */}
-                            <div className="absolute inset-0 opacity-10">
-                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                                    <defs>
-                                        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
-                                        </pattern>
-                                    </defs>
-                                    <rect width="100%" height="100%" fill="url(#grid)" />
-                                </svg>
-                            </div>
+                            <div className="relative z-20">
+                                <div className="flex items-center gap-4 mb-10">
+                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                                        <Award size={24} />
+                                    </div>
+                                    <span className="text-sm font-black tracking-[0.2em] uppercase text-primary/60">{t('why_choose')}</span>
+                                </div>
 
-                            <div className="relative z-10 flex justify-between items-start">
-                                <motion.div
-                                    whileHover={{ scale: 1.05 }}
-                                    className="w-24 h-24 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl flex flex-col items-center justify-center shadow-2xl transition-transform"
-                                >
-                                    <span className="text-white font-black text-3xl">5+</span>
-                                    <span className="text-white/60 text-[10px] font-bold uppercase tracking-widest mt-1">Experience</span>
-                                </motion.div>
+                                <h3 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight tracking-tight">
+                                    {t('decade_innovation')}
+                                </h3>
 
-                                <div className="text-right">
-                                    <div className="text-5xl font-black text-white/5 opacity-50 tracking-tighter leading-none mb-2">SINCE</div>
-                                    <div className="text-7xl font-black bg-clip-text text-transparent bg-gradient-to-br from-white to-white/20 leading-none">2019</div>
+                                <p className="text-xl text-gray-600 mb-12 leading-relaxed">
+                                    {t('decade_description')}
+                                </p>
+
+                                <div className="flex flex-wrap gap-8 items-center pt-8 border-t border-gray-50">
+                                    <div className="flex items-center gap-4">
+                                        <span className="text-5xl font-black text-primary">5+</span>
+                                        <div className="leading-tight">
+                                            <div className="text-xs font-bold uppercase tracking-widest text-gray-400">Years of</div>
+                                            <div className="text-sm font-black text-gray-900">Experience</div>
+                                        </div>
+                                    </div>
+                                    <div className="w-px h-10 bg-gray-100 hidden sm:block" />
+                                    <div className="flex items-center gap-4">
+                                        <span className="text-5xl font-black text-gray-900">2019</span>
+                                        <div className="leading-tight">
+                                            <div className="text-xs font-bold uppercase tracking-widest text-gray-400">Founded</div>
+                                            <div className="text-sm font-black text-gray-900">In Saudi</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="relative z-10">
-                                <motion.div
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    className="flex items-center gap-3 mb-4"
-                                >
-                                    <Award className="text-primary w-6 h-6" />
-                                    <span className="text-primary font-bold tracking-widest uppercase text-sm">Certified Innovation</span>
-                                </motion.div>
-                                <h3 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight group-hover:translate-x-2 transition-transform duration-500">
-                                    {t('decade_innovation')}
-                                </h3>
-                                <p className="text-white/60 text-lg max-w-sm leading-relaxed">
-                                    {t('decade_description')}
-                                </p>
-                            </div>
-
-                            {/* Corner light effect */}
-                            <div className="absolute bottom-[-10%] right-[-10%] w-48 h-48 bg-primary/30 rounded-full blur-[80px]" />
+                            {/* Subtle Background Glow */}
+                            <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -z-10 group-hover:bg-primary/10 transition-colors duration-700" />
                         </div>
                     </motion.div>
 
-                    <div className="lg:pl-8 space-y-12">
+                    <div className="space-y-12">
                         <motion.div
-                            initial={{ opacity: 0, x: isRtl ? -30 : 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             className="space-y-6"
                         >
-                            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
+                            <h3 className="text-3xl font-bold text-gray-900 leading-snug">
                                 {t('why_choose_description')}
                             </h3>
-                            <div className="h-1.5 w-20 bg-primary rounded-full" />
+                            <div className="h-1.5 w-12 bg-primary rounded-full" />
                         </motion.div>
 
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div className="grid sm:grid-cols-2 gap-4">
                             {[
-                                { text: t('feature1'), icon: <CheckCircle2 className="w-6 h-6 text-green-500" /> },
-                                { text: t('feature2'), icon: <CheckCircle2 className="w-6 h-6 text-green-500" /> },
-                                { text: t('feature3'), icon: <CheckCircle2 className="w-6 h-6 text-green-500" /> },
-                                { text: t('feature4'), icon: <CheckCircle2 className="w-6 h-6 text-green-500" /> }
+                                { text: t('feature1'), delay: 0 },
+                                { text: t('feature2'), delay: 0.1 },
+                                { text: t('feature3'), delay: 0.2 },
+                                { text: t('feature4'), delay: 0.3 }
                             ].map((item, i) => (
-                                <motion.li
+                                <motion.div
                                     key={i}
-                                    initial={{ opacity: 0, y: 10 }}
+                                    initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: 0.1 * i }}
-                                    className="flex items-start gap-4 p-4 rounded-2xl hover:bg-gray-50 transition-colors group"
+                                    transition={{ delay: item.delay }}
+                                    className="p-6 rounded-2xl bg-gray-50/50 border border-transparent hover:border-primary/20 hover:bg-white hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group"
                                 >
-                                    <div className="mt-1 group-hover:scale-125 transition-transform duration-300">
-                                        {item.icon}
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-green-500 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                                            <CheckCircle2 size={20} />
+                                        </div>
+                                        <span className="text-gray-900 font-bold text-sm tracking-tight">{item.text}</span>
                                     </div>
-                                    <span className="text-gray-700 font-bold leading-snug">{item.text}</span>
-                                </motion.li>
+                                </motion.div>
                             ))}
-                        </ul>
+                        </div>
 
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="pt-6"
+                            className="pt-4"
                         >
-                            <button className="flex items-center gap-3 text-primary font-black uppercase tracking-widest hover:gap-5 transition-all group">
+                            <button className="h-14 px-8 bg-gray-900 text-white rounded-2xl font-bold flex items-center gap-3 hover:bg-primary transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 group">
                                 <span>Discover our journey</span>
-                                <Rocket className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                                <Rocket className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-300" />
                             </button>
                         </motion.div>
                     </div>
