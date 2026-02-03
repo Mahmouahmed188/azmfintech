@@ -39,7 +39,7 @@ const Hero = () => {
                         <span>{t('badge')}</span>
                     </div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold text-gray-900 leading-[1.1] mb-6">
+                    <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-[1.2] mb-8">
                         {t('title_main')} <span className="text-primary italic">{t('title_highlight')}</span> {t('title_sub')}
                     </h1>
 
