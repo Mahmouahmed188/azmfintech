@@ -40,7 +40,7 @@ const Navbar = () => {
             )}
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <Link href="/" className="relative h-10 w-32 md:w-40 flex items-center">
+                <Link href="/" className="relative h-15 w-32 md:w-40 flex items-center">
                     <Image
                         src="/logo-w.png"
                         alt={common('logo')}
