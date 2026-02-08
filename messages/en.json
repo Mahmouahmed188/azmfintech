@@ -190,5 +190,66 @@
         "dark": "Dark Mode",
         "system": "System Default",
         "toggle": "Toggle theme"
+    },
+    "ReactFlowCanvas": {
+        "sidebar": {
+            "components": "Components",
+            "drag_to_canvas": "Drag to canvas",
+            "back_to_home": "Back to Home",
+            "category_services": "Services",
+            "category_infrastructure": "Infrastructure",
+            "category_connections": "Connections",
+            "instructions": {
+                "drag_nodes": "Drag nodes to reposition",
+                "drag_handles": "Drag handles to connect nodes",
+                "double_click_delete": "Double-click node to delete"
+            }
+        },
+        "services": {
+            "cloud": {
+                "label": "Cloud Service",
+                "description": "Scalable cloud infrastructure"
+            },
+            "database": {
+                "label": "Database",
+                "description": "Secure data storage"
+            },
+            "ai": {
+                "label": "AI Engine",
+                "description": "Machine learning models"
+            },
+            "api": {
+                "label": "API Gateway",
+                "description": "API management & routing"
+            },
+            "server": {
+                "label": "Server",
+                "description": "Compute resources"
+            },
+            "security": {
+                "label": "Security",
+                "description": "Protection & encryption"
+            },
+            "automation": {
+                "label": "Automation",
+                "description": "Workflow automation"
+            },
+            "container": {
+                "label": "Container",
+                "description": "Containerized applications"
+            }
+        },
+        "stats": {
+            "services": "Services",
+            "connections": "Connections",
+            "clear_board": "Clear Board"
+        },
+        "empty_state": {
+            "drop_components_here": "Drop components here",
+            "drag_from_sidebar": "Drag items from the sidebar to start building"
+        },
+        "drag_over": {
+            "drop_to_add": "Drop to add component"
+        }
     }
 }

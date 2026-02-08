@@ -46,7 +46,7 @@ import {
   Home,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useWorkflowStore } from "@/stores/workflowStore";
 import "@xyflow/react/dist/style.css";
 
@@ -78,99 +78,6 @@ interface ParticleType {
   duration: number;
   delay: number;
 }
-
-// ============================================
-// AVAILABLE SERVICES
-// ============================================
-const availableServices: ServiceItem[] = [
-  {
-    id: "cloud",
-    type: "cloud",
-    label: "Cloud Service",
-    iconName: "Cloud",
-    color: "#3B82F6",
-    category: "services",
-    description: "Scalable cloud infrastructure",
-  },
-  {
-    id: "database",
-    type: "database",
-    label: "Database",
-    iconName: "Database",
-    color: "#10B981",
-    category: "infrastructure",
-    description: "Secure data storage",
-  },
-  {
-    id: "ai",
-    type: "ai",
-    label: "AI Engine",
-    iconName: "Cpu",
-    color: "#8B5CF6",
-    category: "services",
-    description: "Machine learning models",
-  },
-  {
-    id: "api",
-    type: "api",
-    label: "API Gateway",
-    iconName: "Globe",
-    color: "#F59E0B",
-    category: "connections",
-    description: "API management & routing",
-  },
-  {
-    id: "server",
-    type: "server",
-    label: "Server",
-    iconName: "Server",
-    color: "#EF4444",
-    category: "infrastructure",
-    description: "Compute resources",
-  },
-  {
-    id: "security",
-    type: "security",
-    label: "Security",
-    iconName: "Shield",
-    color: "#EC4899",
-    category: "services",
-    description: "Protection & encryption",
-  },
-  {
-    id: "automation",
-    type: "automation",
-    label: "Automation",
-    iconName: "Zap",
-    color: "#14B8A6",
-    category: "services",
-    description: "Workflow automation",
-  },
-  {
-    id: "container",
-    type: "container",
-    label: "Container",
-    iconName: "Box",
-    color: "#6366F1",
-    category: "infrastructure",
-    description: "Containerized applications",
-  },
-];
-
-// Icon mapping
-const iconMap: Record<
-  string,
-  React.ComponentType<{ size?: number; className?: string }>
-> = {
-  Cloud,
-  Database,
-  Cpu,
-  Globe,
-  Server,
-  Shield,
-  Zap,
-  Box,
-};
 
 // ============================================
 // SPACE BACKGROUND COMPONENT
@@ -306,6 +213,101 @@ const SpaceBackground: React.FC = () => {
   );
 };
 
+// Icon mapping
+const iconMap: Record<
+  string,
+  React.ComponentType<{ size?: number; className?: string }>
+> = {
+  Cloud,
+  Database,
+  Cpu,
+  Globe,
+  Server,
+  Shield,
+  Zap,
+  Box,
+};
+
+// Get available services based on translations
+const useAvailableServices = (): ServiceItem[] => {
+  const t = useTranslations("ReactFlowCanvas.services");
+
+  return [
+    {
+      id: "cloud",
+      type: "cloud",
+      label: t("cloud.label"),
+      iconName: "Cloud",
+      color: "#3B82F6",
+      category: "services",
+      description: t("cloud.description"),
+    },
+    {
+      id: "database",
+      type: "database",
+      label: t("database.label"),
+      iconName: "Database",
+      color: "#10B981",
+      category: "infrastructure",
+      description: t("database.description"),
+    },
+    {
+      id: "ai",
+      type: "ai",
+      label: t("ai.label"),
+      iconName: "Cpu",
+      color: "#8B5CF6",
+      category: "services",
+      description: t("ai.description"),
+    },
+    {
+      id: "api",
+      type: "api",
+      label: t("api.label"),
+      iconName: "Globe",
+      color: "#F59E0B",
+      category: "connections",
+      description: t("api.description"),
+    },
+    {
+      id: "server",
+      type: "server",
+      label: t("server.label"),
+      iconName: "Server",
+      color: "#EF4444",
+      category: "infrastructure",
+      description: t("server.description"),
+    },
+    {
+      id: "security",
+      type: "security",
+      label: t("security.label"),
+      iconName: "Shield",
+      color: "#EC4899",
+      category: "services",
+      description: t("security.description"),
+    },
+    {
+      id: "automation",
+      type: "automation",
+      label: t("automation.label"),
+      iconName: "Zap",
+      color: "#14B8A6",
+      category: "services",
+      description: t("automation.description"),
+    },
+    {
+      id: "container",
+      type: "container",
+      label: t("container.label"),
+      iconName: "Box",
+      color: "#6366F1",
+      category: "infrastructure",
+      description: t("container.description"),
+    },
+  ];
+};
+
 // ============================================
 // CUSTOM NODE COMPONENT WITH FLOATING ANIMATION
 // ============================================
@@ -434,7 +436,9 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ onDragStart, onBackToHome }) => {
+  const t = useTranslations("ReactFlowCanvas.sidebar");
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
+  const availableServices = useAvailableServices();
 
   const handleDragStart = (event: React.DragEvent, service: ServiceItem) => {
     setDraggedItem(service.id);
@@ -471,9 +475,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart, onBackToHome }) => {
               <Workflow className="text-white" size={20} />
             </motion.div>
             <div>
-              <span className="block">Components</span>
+              <span className="block">{t("components")}</span>
               <span className="text-xs text-gray-400 font-normal">
-                Drag to canvas
+                {t("drag_to_canvas")}
               </span>
             </div>
           </h2>
@@ -483,10 +487,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart, onBackToHome }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:border-white/40 transition-all text-sm"
-              title="Back to Home"
+              title={t("back_to_home")}
             >
               <Home size={16} />
-              {/* <span>Home</span> */}
             </motion.button>
           )}
         </div>
@@ -498,12 +501,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart, onBackToHome }) => {
         <div>
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2 flex items-center gap-2">
             <Sparkles size={12} />
-            Services
+            {t("category_services")}
           </h3>
           <div className="space-y-2">
             {availableServices
-              .filter((s) => s.category === "services")
-              .map((service) => (
+              .filter((s: ServiceItem) => s.category === "services")
+              .map((service: ServiceItem) => (
                 <DraggableItem
                   key={service.id}
                   service={service}
@@ -519,12 +522,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart, onBackToHome }) => {
         <div>
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2 flex items-center gap-2">
             <Server size={12} />
-            Infrastructure
+            {t("category_infrastructure")}
           </h3>
           <div className="space-y-2">
             {availableServices
-              .filter((s) => s.category === "infrastructure")
-              .map((service) => (
+              .filter((s: ServiceItem) => s.category === "infrastructure")
+              .map((service: ServiceItem) => (
                 <DraggableItem
                   key={service.id}
                   service={service}
@@ -540,12 +543,12 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart, onBackToHome }) => {
         <div>
           <h3 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 px-2 flex items-center gap-2">
             <GitBranch size={12} />
-            Connections
+            {t("category_connections")}
           </h3>
           <div className="space-y-2">
             {availableServices
-              .filter((s) => s.category === "connections")
-              .map((service) => (
+              .filter((s: ServiceItem) => s.category === "connections")
+              .map((service: ServiceItem) => (
                 <DraggableItem
                   key={service.id}
                   service={service}
@@ -563,15 +566,15 @@ const Sidebar: React.FC<SidebarProps> = ({ onDragStart, onBackToHome }) => {
         <div className="text-xs text-gray-500 space-y-2">
           <p className="flex items-center gap-2">
             <MousePointer2 size={12} className="text-[#9C4C9D]" />
-            <span>Drag nodes to reposition</span>
+            <span>{t("instructions.drag_nodes")}</span>
           </p>
           <p className="flex items-center gap-2">
             <Link2 size={12} className="text-blue-400" />
-            <span>Drag handles to connect nodes</span>
+            <span>{t("instructions.drag_handles")}</span>
           </p>
           <p className="flex items-center gap-2">
             <ArrowRight size={12} className="text-green-400" />
-            <span>Double-click node to delete</span>
+            <span>{t("instructions.double_click_delete")}</span>
           </p>
         </div>
       </div>
@@ -648,6 +651,8 @@ const StatsBar: React.FC<StatsBarProps> = ({
   edgesCount,
   onClear,
 }) => {
+  const t = useTranslations("ReactFlowCanvas.stats");
+
   return (
     <motion.div
       initial={{ y: 100, opacity: 0 }}
@@ -662,7 +667,7 @@ const StatsBar: React.FC<StatsBarProps> = ({
       >
         <Box size={18} className="text-[#9C4C9D]" />
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-400">Services</span>
+          <span className="text-sm font-medium text-gray-400">{t("services")}</span>
           <motion.span
             className="text-xl font-bold text-white min-w-[20px] text-center"
             key={nodesCount}
@@ -682,7 +687,7 @@ const StatsBar: React.FC<StatsBarProps> = ({
       >
         <Link2 size={18} className="text-blue-400" />
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-400">Connections</span>
+          <span className="text-sm font-medium text-gray-400">{t("connections")}</span>
           <motion.span
             className="text-xl font-bold text-white min-w-[20px] text-center"
             key={edgesCount}
@@ -706,7 +711,7 @@ const StatsBar: React.FC<StatsBarProps> = ({
         className="flex items-center gap-2 px-5 py-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-all text-sm font-medium"
       >
         <RotateCcw size={16} />
-        Clear Board
+        {t("clear_board")}
       </motion.button>
     </motion.div>
   );
@@ -718,6 +723,9 @@ const StatsBar: React.FC<StatsBarProps> = ({
 const WorkflowCanvasContent: React.FC = () => {
   const router = useRouter();
   const locale = useLocale();
+  const tEmpty = useTranslations("ReactFlowCanvas.empty_state");
+  const tDragOver = useTranslations("ReactFlowCanvas.drag_over");
+  const availableServices = useAvailableServices();
 
   // Global state from Zustand store
   const {
@@ -972,10 +980,10 @@ const WorkflowCanvasContent: React.FC = () => {
                       <Layers size={48} className="text-white/30" />
                     </motion.div>
                     <p className="text-gray-300 text-xl font-semibold">
-                      Drop components here
+                      {tEmpty("drop_components_here")}
                     </p>
                     <p className="text-gray-500 text-sm mt-2">
-                      Drag items from the sidebar to start building
+                      {tEmpty("drag_from_sidebar")}
                     </p>
                   </motion.div>
                 </div>
@@ -992,7 +1000,7 @@ const WorkflowCanvasContent: React.FC = () => {
                     exit={{ opacity: 0, scale: 0.8 }}
                     className="px-8 py-4 rounded-2xl bg-[#9C4C9D]/80 backdrop-blur-xl border border-white/30 text-white text-lg font-medium shadow-2xl"
                   >
-                    Drop to add component
+                    {tDragOver("drop_to_add")}
                   </motion.div>
                 </div>
               )}

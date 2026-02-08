@@ -190,5 +190,66 @@
         "dark": "الوضع الداكن",
         "system": "الوضع الافتراضي للنظام",
         "toggle": "تبديل السمة"
+    },
+    "ReactFlowCanvas": {
+        "sidebar": {
+            "components": "المكونات",
+            "drag_to_canvas": "اسحب إلى اللوحة",
+            "back_to_home": "العودة إلى الصفحة الرئيسية",
+            "category_services": "الخدمات",
+            "category_infrastructure": "البنية التحتية",
+            "category_connections": "الروابط",
+            "instructions": {
+                "drag_nodes": "اسحب العقد لإعادة تموضعها",
+                "drag_handles": "اسحب المقابض لربط العقد",
+                "double_click_delete": "انقر مرتين لحذف العقدة"
+            }
+        },
+        "services": {
+            "cloud": {
+                "label": "خدمة السحابة",
+                "description": "بنية تحتية سحابية قابلة للتوسع"
+            },
+            "database": {
+                "label": "قاعدة البيانات",
+                "description": "تخزين بيانات آمن"
+            },
+            "ai": {
+                "label": "محرك الذكاء الاصطناعي",
+                "description": "نماذج تعلم الآلة"
+            },
+            "api": {
+                "label": "بوابة API",
+                "description": "إدارة وتوجيه API"
+            },
+            "server": {
+                "label": "الخادم",
+                "description": "موارد الحوسبة"
+            },
+            "security": {
+                "label": "الأمان",
+                "description": "الحماية والتشفير"
+            },
+            "automation": {
+                "label": "الأتمتة",
+                "description": "أتمتة سير العمل"
+            },
+            "container": {
+                "label": "الحاوية",
+                "description": "التطبيقات في الحاويات"
+            }
+        },
+        "stats": {
+            "services": "الخدمات",
+            "connections": "الروابط",
+            "clear_board": "مسح اللوحة"
+        },
+        "empty_state": {
+            "drop_components_here": "أفلق المكونات هنا",
+            "drag_from_sidebar": "اسحب العناصر من الشريط الجانبي لبدء البناء"
+        },
+        "drag_over": {
+            "drop_to_add": "أفلق لإضافة مكون"
+        }
     }
 }
