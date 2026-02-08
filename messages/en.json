@@ -144,5 +144,11 @@
     },
     "Common": {
         "logo": "AZM Fintech"
+    },
+    "Theme": {
+        "light": "Light Mode",
+        "dark": "Dark Mode",
+        "system": "System Default",
+        "toggle": "Toggle theme"
     }
 }

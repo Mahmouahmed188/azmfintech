@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
+import { ThemeToggle } from "../ui/ThemeToggle";
 
 const Navbar = () => {
   const t = useTranslations("Navbar");
@@ -35,7 +36,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
         isScrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-gray-200 py-3"
+          ? "bg-[var(--glass-bg)] backdrop-blur-md border-b border-[var(--border)] py-3"
           : "bg-transparent",
       )}
     >
@@ -45,7 +46,7 @@ const Navbar = () => {
             src="/logo-w.png"
             alt={common("logo")}
             fill
-            className="object-contain brightness-0 transition-opacity hover:opacity-80"
+            className="object-contain brightness-0 dark:brightness-100 invert dark:invert-0 transition-all duration-300 hover:opacity-80"
             priority
           />
         </Link>
@@ -56,17 +57,18 @@ const Navbar = () => {
             <Link
               key={link.name}
               href={link.href}
-              className="text-gray-600 hover:text-primary font-medium transition-colors"
+              className="text-[var(--text-secondary)] hover:text-[var(--primary)] font-medium transition-colors"
             >
               {link.name}
             </Link>
           ))}
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <LanguageSwitcher />
+            <ThemeToggle size="sm" variant="icon" />
             <Link
               href="#contact"
-              className="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-primary/90 transition-all hover:shadow-lg hover:shadow-primary/30"
+              className="bg-[var(--primary)] text-[var(--primary-foreground)] px-6 py-2.5 rounded-full font-medium hover:opacity-90 transition-all hover:shadow-lg hover:shadow-[var(--primary-glow)]"
             >
               {t("getStarted")}
             </Link>
@@ -74,10 +76,11 @@ const Navbar = () => {
         </div>
 
         {/* Mobile menu button */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle size="sm" variant="icon" />
           <LanguageSwitcher />
           <button
-            className="text-gray-600"
+            className="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -90,13 +93,13 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 p-6 flex flex-col space-y-4 shadow-xl"
+          className="md:hidden absolute top-full left-0 right-0 bg-[var(--surface)] border-b border-[var(--border)] p-6 flex flex-col space-y-4 shadow-xl"
         >
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-gray-600 hover:text-primary font-medium"
+              className="text-[var(--text-secondary)] hover:text-[var(--primary)] font-medium transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
@@ -104,7 +107,7 @@ const Navbar = () => {
           ))}
           <Link
             href="#contact"
-            className="bg-primary text-white px-6 py-3 rounded-xl font-medium text-center"
+            className="bg-[var(--primary)] text-[var(--primary-foreground)] px-6 py-3 rounded-xl font-medium text-center hover:opacity-90 transition-opacity"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             {t("getStarted")}

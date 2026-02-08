@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link } from "@/i18n/routing";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -13,7 +13,7 @@ const Footer = () => {
     const isRtl = locale === 'ar';
 
     return (
-        <footer className="bg-gray-50 pt-24 pb-12 border-t border-gray-100">
+        <footer className="bg-[var(--background-secondary)] pt-24 pb-12 border-t border-[var(--border)]">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     <div className="space-y-6">
@@ -22,10 +22,10 @@ const Footer = () => {
                                 src="/logo-w.png"
                                 alt={common('logo')}
                                 fill
-                                className="object-contain brightness-0"
+                                className="object-contain brightness-0 dark:brightness-100 invert dark:invert-0 transition-all duration-300"
                             />
                         </Link>
-                        <p className="text-gray-500 leading-relaxed max-w-xs transition-colors">
+                        <p className="text-[var(--text-muted)] leading-relaxed max-w-xs transition-colors">
                             {t('description')}
                         </p>
                         <div className="flex items-center gap-4">
@@ -33,7 +33,7 @@ const Footer = () => {
                                 <a
                                     key={i}
                                     href="#"
-                                    className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+                                    className="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:bg-[var(--primary)] hover:text-[var(--primary-foreground)] hover:border-[var(--primary)] transition-all duration-300"
                                 >
                                     <Icon size={18} />
                                 </a>
@@ -42,7 +42,7 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-gray-900 font-bold mb-8">{t('product')}</h4>
+                        <h4 className="text-[var(--text-primary)] font-bold mb-8">{t('product')}</h4>
                         <ul className="space-y-4">
                             {[
                                 { name: t('links.banking'), href: "#" },
@@ -51,7 +51,7 @@ const Footer = () => {
                                 { name: t('links.api'), href: "#" }
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="text-gray-500 hover:text-primary transition-colors">
+                                    <Link href={link.href} className="text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors">
                                         {link.name}
                                     </Link>
                                 </li>
@@ -60,7 +60,7 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-gray-900 font-bold mb-8">{t('company')}</h4>
+                        <h4 className="text-[var(--text-primary)] font-bold mb-8">{t('company')}</h4>
                         <ul className="space-y-4">
                             {[
                                 { name: t('links.about'), href: "#about" },
@@ -69,7 +69,7 @@ const Footer = () => {
                                 { name: t('links.contact'), href: "#contact" }
                             ].map((link) => (
                                 <li key={link.name}>
-                                    <Link href={link.href} className="text-gray-500 hover:text-primary transition-colors">
+                                    <Link href={link.href} className="text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors">
                                         {link.name}
                                     </Link>
                                 </li>
@@ -78,29 +78,29 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-gray-900 font-bold mb-8">{t('newsletter')}</h4>
-                        <p className="text-gray-500 mb-6 font-medium">{t('newsletter_sub')}</p>
+                        <h4 className="text-[var(--text-primary)] font-bold mb-8">{t('newsletter')}</h4>
+                        <p className="text-[var(--text-muted)] mb-6 font-medium">{t('newsletter_sub')}</p>
                         <div className="relative">
                             <input
                                 type="email"
                                 placeholder={t('placeholder')}
-                                className="w-full bg-white border border-gray-200 rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium"
+                                className="w-full bg-[var(--surface)] border border-[var(--border)] rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]/20 transition-all font-medium text-[var(--text-primary)] placeholder:text-[var(--text-muted)]"
                             />
-                            <button className={`absolute ${isRtl ? 'left-2' : 'right-2'} top-2 bottom-2 px-6 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all font-bold`}>
+                            <button className={`absolute ${isRtl ? 'left-2' : 'right-2'} top-2 bottom-2 px-6 bg-[var(--primary)] text-[var(--primary-foreground)] rounded-xl hover:opacity-90 transition-all font-bold`}>
                                 {t('subscribe')}
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <div className="pt-12 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-gray-500 text-sm font-medium">
+                <div className="pt-12 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-6">
+                    <p className="text-[var(--text-muted)] text-sm font-medium">
                         © 2026 {common('logo')}. {t('rights')}
                     </p>
-                    <div className="flex items-center gap-8 text-sm text-gray-500 font-medium">
-                        <Link href="#" className="hover:text-primary transition-colors">{t('privacy')}</Link>
-                        <Link href="#" className="hover:text-primary transition-colors">{t('terms')}</Link>
-                        <Link href="#" className="hover:text-primary transition-colors">{t('cookies')}</Link>
+                    <div className="flex items-center gap-8 text-sm text-[var(--text-muted)] font-medium">
+                        <Link href="#" className="hover:text-[var(--primary)] transition-colors">{t('privacy')}</Link>
+                        <Link href="#" className="hover:text-[var(--primary)] transition-colors">{t('terms')}</Link>
+                        <Link href="#" className="hover:text-[var(--primary)] transition-colors">{t('cookies')}</Link>
                     </div>
                 </div>
             </div>

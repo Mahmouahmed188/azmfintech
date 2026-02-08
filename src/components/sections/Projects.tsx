@@ -35,23 +35,23 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="py-24 bg-gray-900 text-white overflow-hidden">
+        <section id="projects" className="py-24 bg-[var(--background-secondary)] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="max-w-3xl mb-16">
                     <motion.h2
                         initial={{ opacity: 0, x: isRtl ? 30 : -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-bold mb-6"
+                        className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-6"
                     >
-                        {t('title')} <span className="text-primary">{t('title_highlight')}</span>
+                        {t('title')} <span className="text-[var(--primary)]">{t('title_highlight')}</span>
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, x: isRtl ? 30 : -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-lg text-gray-400"
+                        className="text-lg text-[var(--text-muted)]"
                     >
                         {t('description')}
                     </motion.p>
@@ -68,7 +68,7 @@ const Projects = () => {
                             className="group relative overflow-hidden rounded-[32px] aspect-[4/5]"
                         >
                             {/* Image Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/40 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
 
                             {/* Background Image */}
                             <Image
@@ -80,16 +80,16 @@ const Projects = () => {
 
                             {/* Content */}
                             <div className={`absolute inset-x-0 bottom-0 p-10 z-20 transform transition-transform duration-500 group-hover:translate-y-[-10px] ${isRtl ? 'text-right' : 'text-left'}`}>
-                                <div className="inline-block px-3 py-1 rounded-full bg-primary/20 backdrop-blur-md text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/30">
+                                <div className="inline-block px-3 py-1 rounded-full bg-[var(--primary)]/20 backdrop-blur-md text-[var(--primary)] text-xs font-bold uppercase tracking-wider mb-4 border border-[var(--primary)]/30">
                                     {project.category}
                                 </div>
-                                <h3 className="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
+                                <h3 className="text-2xl font-bold mb-3 text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">{project.title}</h3>
+                                <p className="text-[var(--text-muted)] text-sm leading-relaxed mb-6 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
                                     {project.summary}
                                 </p>
-                                <div className="flex items-center gap-2 text-white font-bold text-sm group/btn">
+                                <div className="flex items-center gap-2 text-[var(--text-primary)] font-bold text-sm group/btn">
                                     <span>{t('view_project')}</span>
-                                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover/btn:bg-primary transition-colors">
+                                    <div className="w-8 h-8 rounded-full bg-[var(--text-primary)]/10 flex items-center justify-center group-hover/btn:bg-[var(--primary)] transition-colors">
                                         <svg className={`w-4 h-4 ${isRtl ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                         </svg>
@@ -101,7 +101,7 @@ const Projects = () => {
                 </div>
 
                 {/* Decorative Grid Line */}
-                <div className="mt-24 w-full h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent opacity-50" />
+                <div className="mt-24 w-full h-px bg-gradient-to-r from-transparent via-[var(--border-dark)] to-transparent opacity-50" />
             </div>
         </section>
     );
