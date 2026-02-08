@@ -68,7 +68,16 @@ export function ThemeProvider({
     // Apply new theme
     root.setAttribute("data-theme", newTheme);
 
-    // Re-enable transitions
+    // Add/remove class-based theme for Tailwind
+    if (newTheme === "dark") {
+      root.classList.add("dark");
+      root.classList.remove("light");
+    } else {
+      root.classList.add("light");
+      root.classList.remove("dark");
+    }
+
+    // Re-enable transitions after a brief delay
     if (disableTransitionOnChange) {
       requestAnimationFrame(() => {
         body.classList.remove("no-theme-transition");
@@ -111,6 +120,12 @@ export function ThemeProvider({
     
     const resolved = resolveTheme(initialTheme);
     applyTheme(resolved);
+
+    // Remove theme loading class to enable transitions after initial theme is set
+    requestAnimationFrame(() => {
+      document.documentElement.classList.remove("theme-loading");
+      document.body.classList.remove("theme-loading");
+    });
 
     // Listen for system theme changes
     if (enableSystem) {

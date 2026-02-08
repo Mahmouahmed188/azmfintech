@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ThemeScript } from "@/components/providers/ThemeScript";
 
 const locales = routing.locales;
 
@@ -46,9 +47,12 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={direction} suppressHydrationWarning>
+      <head>
+        <ThemeScript defaultTheme="system" storageKey="azm-fintech-theme" />
+      </head>
       <body
         suppressHydrationWarning
-        className={`${cairo.variable} ${ibmPlexSansArabic.variable} antialiased`}
+        className={`${cairo.variable} ${ibmPlexSansArabic.variable} antialiased theme-loading`}
       >
         <ThemeProvider defaultTheme="system" enableSystem>
           <NextIntlClientProvider messages={messages} locale={locale}>

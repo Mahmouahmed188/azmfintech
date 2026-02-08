@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* Hide content initially to prevent theme flash */
+html:not([data-theme]) {
+  visibility: hidden;
+}
+
+/* Show content after theme is applied */
+html[data-theme] {
+  visibility: visible;
+}
+
+/* Disable theme transitions on initial load */
+html.theme-loading *,
+html.theme-loading *::before,
+html.theme-loading *::after {
+  transition: none !important;
+}
+
 :root {
   /* Light Mode Colors */
   --background: #ffffff;
