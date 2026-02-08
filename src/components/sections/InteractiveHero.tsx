@@ -506,7 +506,7 @@ const InteractiveHeroCanvas: React.FC = () => {
   }, [clearBoard, setNodes, setEdges]);
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800">
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden  from-gray-900 via-gray-900 to-gray-800">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div
