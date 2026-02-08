@@ -57,6 +57,14 @@ interface ServiceItem {
   description: string;
 }
 
+interface AvailableService {
+  id: string;
+  type: string;
+  iconName: string;
+  color: string;
+  category: "services" | "connections" | "infrastructure";
+}
+
 interface NodeData extends Record<string, unknown> {
   label: string;
   iconName: string;
@@ -67,60 +75,48 @@ interface NodeData extends Record<string, unknown> {
 // ============================================
 // AVAILABLE SERVICES (Mini version for hero)
 // ============================================
-const availableServices: ServiceItem[] = [
+const availableServices: AvailableService[] = [
   {
     id: "cloud",
     type: "cloud",
-    label: "Cloud",
     iconName: "Cloud",
     color: "#3B82F6",
     category: "services",
-    description: "Cloud infrastructure",
   },
   {
     id: "database",
     type: "database",
-    label: "Database",
     iconName: "Database",
     color: "#10B981",
     category: "infrastructure",
-    description: "Data storage",
   },
   {
     id: "ai",
     type: "ai",
-    label: "AI",
     iconName: "Cpu",
     color: "#8B5CF6",
     category: "services",
-    description: "AI Engine",
   },
   {
     id: "api",
     type: "api",
-    label: "API",
     iconName: "Globe",
     color: "#F59E0B",
     category: "connections",
-    description: "API Gateway",
   },
   {
     id: "server",
     type: "server",
-    label: "Server",
     iconName: "Server",
     color: "#EF4444",
     category: "infrastructure",
-    description: "Compute",
   },
   {
     id: "automation",
     type: "automation",
-    label: "Auto",
     iconName: "Zap",
     color: "#14B8A6",
     category: "services",
-    description: "Automation",
   },
 ];
 
@@ -256,7 +252,7 @@ const nodeTypes: NodeTypes = {
 // SIDEBAR COMPONENT (Right Side)
 // ============================================
 interface SidebarProps {
-  onDragStart: (event: React.DragEvent, service: ServiceItem) => void;
+  onDragStart: (event: React.DragEvent, service: AvailableService) => void;
   onExpand: () => void;
   onClear: () => void;
   nodesCount: number;
@@ -272,7 +268,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const [draggedItem, setDraggedItem] = useState<string | null>(null);
 
-  const handleDragStart = (event: React.DragEvent, service: ServiceItem) => {
+  const handleDragStart = (event: React.DragEvent, service: AvailableService) => {
     setDraggedItem(service.id);
     onDragStart(event, service);
   };
@@ -301,7 +297,7 @@ const Sidebar: React.FC<SidebarProps> = ({
 
 // Draggable Item Component
 interface DraggableItemProps {
-  service: ServiceItem;
+  service: AvailableService;
   isDragging: boolean;
   onDragStart: (event: React.DragEvent) => void;
   onDragEnd: () => void;
@@ -330,7 +326,7 @@ const DraggableItem: React.FC<DraggableItemProps> = ({
           borderColor: `${service.color}30`,
           color: service.color,
         }}
-        title={service.label}
+        title={service.id}
       >
         <IconComponent size={18} />
       </div>
@@ -345,6 +341,7 @@ const InteractiveHeroCanvas: React.FC = () => {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("Hero");
+  const tServices = useTranslations("InteractiveHero");
   const isRtl = locale === "ar";
 
   // Global state from Zustand store
@@ -436,7 +433,7 @@ const InteractiveHeroCanvas: React.FC = () => {
   );
 
   // Handle drag start from sidebar
-  const onDragStart = (event: React.DragEvent, service: ServiceItem) => {
+  const onDragStart = (event: React.DragEvent, service: AvailableService) => {
     event.dataTransfer.setData(
       "application/reactflow",
       JSON.stringify(service),
@@ -465,7 +462,7 @@ const InteractiveHeroCanvas: React.FC = () => {
       const data = event.dataTransfer.getData("application/reactflow");
       if (!data || !reactFlowInstance) return;
 
-      const service: ServiceItem = JSON.parse(data);
+      const service: AvailableService = JSON.parse(data);
 
       // Calculate exact drop position using React Flow's screenToFlowPosition
       const position: XYPosition = reactFlowInstance.screenToFlowPosition({
@@ -473,23 +470,26 @@ const InteractiveHeroCanvas: React.FC = () => {
         y: event.clientY,
       });
 
+      const label = (tServices as any)(`services.${service.id}.label`);
+      const description = (tServices as any)(`services.${service.id}.description`);
+
       // Create new node with unique ID
       const newNode: Node = {
         id: `node-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         type: "custom",
         position,
         data: {
-          label: service.label,
+          label,
           iconName: service.iconName,
           color: service.color,
-          description: service.description,
+          description,
         },
       };
 
       // Add node to state - THIS MAKES IT PERSISTENT
       setNodes((nds: Node[]) => [...nds, newNode]);
     },
-    [reactFlowInstance, setNodes],
+    [reactFlowInstance, setNodes, tServices],
   );
 
   // Handle expand to full workflow
@@ -575,7 +575,7 @@ const InteractiveHeroCanvas: React.FC = () => {
               </div>
               <div className="flex items-center gap-3">
                 <span className="text-xs text-gray-400">
-                  Interactive Canvas
+                  {tServices("interactive_canvas")}
                 </span>
                 <motion.button
                   onClick={handleExpand}
@@ -584,7 +584,7 @@ const InteractiveHeroCanvas: React.FC = () => {
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-xs text-white hover:bg-white/20 hover:border-white/40 transition-all"
                 >
                   <Maximize2 size={12} />
-                  <span>Expand</span>
+                  <span>{tServices("expand")}</span>
                 </motion.button>
               </div>
             </div>
@@ -665,10 +665,10 @@ const InteractiveHeroCanvas: React.FC = () => {
                             <Cloud size={28} className="text-white/30" />
                           </motion.div>
                           <p className="text-gray-400 text-sm font-medium">
-                            Drop components here
+                            {tServices("drop_components_here")}
                           </p>
                           <p className="text-gray-500 text-xs mt-1">
-                            Drag from sidebar
+                            {tServices("drag_from_sidebar")}
                           </p>
                         </motion.div>
                       </div>
@@ -685,7 +685,7 @@ const InteractiveHeroCanvas: React.FC = () => {
                           exit={{ opacity: 0, scale: 0.8 }}
                           className="px-6 py-3 rounded-xl bg-[#9C4C9D]/80 backdrop-blur-xl border border-white/30 text-white text-sm font-medium shadow-xl"
                         >
-                          Drop to add
+                          {tServices("drop_to_add")}
                         </motion.div>
                       </div>
                     )}

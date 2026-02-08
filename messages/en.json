@@ -105,7 +105,7 @@
             }
         }
     },
-    "CTA": {
+"CTA": {
         "title_main": "Ready to keep pace with the",
         "title_highlight": "Future of Fintech?",
         "description": "Contact us today to explore how our innovative solutions can support your business growth and achieve your digital transformation goals.",
@@ -114,6 +114,46 @@
         "uptime": "Well-studied Solutions",
         "active_users": "Your partner in digital transformation",
         "uptime_value": "Reliability"
+    },
+    "InteractiveHero": {
+        "badge": "Digital Transformation in Financial Services",
+        "title_main": "Innovating the Future of",
+        "title_highlight": "Fintech",
+        "title_sub": "",
+        "description": "We are committed to contributing to building a prosperous economy and an ambitious nation by implementing high-impact projects that combine efficiency, flexibility, and excellence, in line with the goals of Saudi Vision 2030.",
+        "cta_consultation": "Contact Us",
+        "cta_case_studies": "Explore Our Projects",
+        "interactive_canvas": "Interactive Canvas",
+        "expand": "Expand",
+        "drop_components_here": "Drop components here",
+        "drag_from_sidebar": "Drag from sidebar",
+        "drop_to_add": "Drop to add",
+        "services": {
+            "cloud": {
+                "label": "Cloud",
+                "description": "Cloud infrastructure"
+            },
+            "database": {
+                "label": "Database",
+                "description": "Data storage"
+            },
+            "ai": {
+                "label": "AI",
+                "description": "AI Engine"
+            },
+            "api": {
+                "label": "API",
+                "description": "API Gateway"
+            },
+            "server": {
+                "label": "Server",
+                "description": "Compute"
+            },
+            "automation": {
+                "label": "Auto",
+                "description": "Automation"
+            }
+        }
     },
     "Footer": {
         "description": "AZM Fintech: The leading technical partner in providing innovative financial solutions, committed to achieving Saudi Vision 2030.",
